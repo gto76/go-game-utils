@@ -2,4 +2,7 @@
 https://online-go.com/api/v1/games/872012/sgf
 # address of game history list
 https://online-go.com/library/game-history
-
+# List of sgf editors
+http://senseis.xmp.net/?SGFEditor
+# Eidogo online editor game upload form
+http://eidogo.com/upload
