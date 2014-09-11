@@ -1,0 +1,9 @@
+#!/bin/bash
+# Transforms all moves in a game using rotation and mirroring, so that first move is always in south-east side of upper right corner and also so that if possible first move that is not in that area is in south-east side of whole board.
+# To put it another way:
+# Transforms game using rotation and mirroring, so that as much moves in a row, beginning with the first one satisfy the following rules:
+#	1. x >= 0
+#	2. y >= 0
+#	3. x >= y
+# Usage: ./normalize-game filename-in filename-out
+
