@@ -1,6 +1,5 @@
-// Arguments:	1. string move ('ca' for first row, third columd),
-//				2. int board size ('9' for size of 9x9), 
-//				3. int transformations ('0' for no transformations).
+
+#include "argument-checker.h"
 
 // Transformations int with value 27 gets decoded in this way:
 //
@@ -27,4 +26,25 @@
 // Secondly program finds out which transformations have already been freezed. This is done by looking at the fourth, fifth and sixt bit of a passed int. Values of this bits coresspond to first, second, third transformation being frozen, thats already been decided by erlier invocations of this program that this transformations have to be applied to all the moves for this game to be in normal state. What is being asked of this invocation is which of the remaining (unfrozen) transformations should or should not be aplied.
 // So in concrete example none have been frozen since 0 means tha last 6 bits are 000000. That means that we check [2,2] for the first condition (x >= 0), which it passes, but...
 
+// Prints transformations that need to be done an all moves (in form of an integer)
+// Arguments:	1. string move ('ca' for first row, third columd),
+//				2. int board size ('9' for size of 9x9), 
+//				3. int transformations (the second three bits sigify which transformation has already been decided on [in previous iterations] (either should it happen or not), and the first three signify wether this transformation should happen or not.) 
 
+char *move;
+int boardSize;
+int transformations;
+
+int main(int argc, char **argv) {
+	int retValue = checkArguments(argc, argv, &move, &boardSize, &transformations);
+ 	if (retValue == EXIT_FAILURE) {
+		return EXIT_FAILURE;
+	}
+
+/*
+	char letterCoordinates[3];
+	transformMove(letterCoordinates);
+	printf("%s\n", letterCoordinates); 
+	return EXIT_SUCCESS;
+	*/
+}
