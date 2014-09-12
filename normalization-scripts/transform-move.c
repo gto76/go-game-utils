@@ -3,6 +3,7 @@
 #include <math.h>
 
 #include "argument-checker.h"
+#include "util.h"
 
 // Prints transformed move.
 // Arguments:	1. string move ('ca' for first row, third column),
@@ -28,40 +29,23 @@ int main(int argc, char **argv) {
 	return EXIT_SUCCESS;
 }
 
-int coordinateNotInRange(char *c) {
-	return *c < 97 || *c > 97 + boardSize-1;
-}
+////////////////////////////////////
 
 int transformMove(char *letters) {
-	int x = getX();
-	int y = getY();
-	if (transformation(1)) {
+	int x = getNumericalCoordinate(move[0], boardSize);
+	int y = getNumericalCoordinate(move[1], boardSize);
+	if (getTransformationBit(1, transformations)) {
 		x *= -1;
 	}
-	if (transformation(2)) {
+	if (getTransformationBit(2, transformations)) {
 		y *= -1;
 	}
-	if (transformation(3)) {
+	if (getTransformationBit(3, transformations)) {
 		int tmp = x;
 		x = y;
 		y = tmp;
 	}
 	getLetterCoordinates(x, y, letters);
-}
-
-// a=0, b=1, ... i=8, ...
-int getX() {
-	return move[0] - 97 - boardSize/2;
-}
-
-// a=0, b=1, ... i=8, ...
-int getY() {
-	return move[1] - 97 - boardSize/2;
-}
-
-// Is i-th bit of transformations int set?
-int transformation(int i) {
-	return (transformations >> (i-1)) & 1; 
 }
 
 // Transform back from number coordinates to letter ones.

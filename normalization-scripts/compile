@@ -1,0 +1,2 @@
+gcc -o find-transformations find-transformations.c util.c argument-checker.c -w
+gcc -o transform-move transform-move.c util.c argument-checker.c -w

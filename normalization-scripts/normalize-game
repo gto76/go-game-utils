@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Transforms all moves in a game using rotation and mirroring, so that first move is always in south-east side of upper right corner and also so that if possible first move that is not in that area is in south-east side of whole board.
 # To put it another way:
 # Transforms game using rotation and mirroring, so that as much moves in a row, beginning with the first one satisfy the following rules:
@@ -6,4 +7,36 @@
 #	2. y >= 0
 #	3. x >= y
 # Usage: ./normalize-game filename-in filename-out
+
+game=`cat`
+
+boardSize=`echo "$game" | grep '^SZ\[' | tr -d 'SZ[]'`
+moveList=`echo "$game" | grep '^;[BW]\[[a-z][a-z]\]$' | tr -d ';BW[]'`
+
+transformations=0
+# Find necesary trasformations for game to be normalized
+for move in "$moveList"; do
+	transformations=`find-transformations "$move" "$boardSize" "$transformations"`
+	# If all transformations freeze bits (bits 4 to 6) have been set then break.
+	if [[ "$transformations" -ge '56' ]]; then
+		break
+	fi
+done
+
+# Normalize game with them
+for line in "$game"; do
+	# If line contains a move
+	if [[ -n `echo "$line" | grep '^;[BW]\[[a-z][a-z]\]$'` ]]; then
+		# Get the move
+		move=`echo "line" | tr -d ';BW[]'`
+		# Transform it
+		transformedMove=`transform-move "$move" "$boardSize" "$transformations"`
+		# Print the line with transformed move
+		echo `echo "$line" | grep '^;[BW]\[' -o`"$transformedMove"\]
+	# otherwise
+	else
+		# just print the line
+		echo "$line"
+	fi
+done
 

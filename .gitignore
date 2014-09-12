@@ -1,2 +1,7 @@
 games
 a.out
+find-transformations
+transform-move
+.*.swp
+.*.*.swp
+test

@@ -1,5 +1,8 @@
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "argument-checker.h"
+#include "util.h"
 
 // Transformations int with value 27 gets decoded in this way:
 //
@@ -41,10 +44,64 @@ int main(int argc, char **argv) {
 		return EXIT_FAILURE;
 	}
 
-/*
-	char letterCoordinates[3];
-	transformMove(letterCoordinates);
-	printf("%s\n", letterCoordinates); 
+	findTransformations();
+	printf("%d\n", transformations);
 	return EXIT_SUCCESS;
-	*/
 }
+
+/////////////////////////////////
+
+int findTransformations() {
+	int x = getNumericalCoordinate(move[0], boardSize);
+	int y = getNumericalCoordinate(move[1], boardSize);
+	int i;	
+	// Loop trough transformations.
+	for	(i = 4; i <= 6; i++) {
+		int transformationNo = i-3;
+		int transformationIsFrozen = getTransformationBit(i, transformations);
+		// If its frozen move to the next.
+		if (transformationIsFrozen)
+			continue;
+		// If its either way (move satisfies constraint if transformation is set or unset)
+		// move to the next.
+		if (satisfiesConstraintRegardlesOfTransformation(transformationNo, x, y))
+			continue;
+		// If it satisfies constraint set transformation bit to 0,
+		// otherwise set it to 1.
+		if (satisfiesConstraint(transformationNo, x, y)) {
+			unsetTransformationBit(transformationNo, &transformations);
+		} else {
+			setTransformationBit(transformationNo, &transformations);
+		}
+		// Freeze transformation.
+		setTransformationBit(i, &transformations);
+	}
+}
+
+int satisfiesConstraintRegardlesOfTransformation(int transformationNo, int x, int y) {
+	if (transformationNo == 1) {
+		return x == 0;
+	} else if (transformationNo == 2) {
+		return y == 0;
+	} else if (transformationNo == 3) {
+		return x == y;
+	}
+	// Serious error occured:
+	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConstraintRegardlesOfTransformation");
+	return -1; 
+}
+
+int satisfiesConstraint(int transformationNo, int x, int y) {
+	if (transformationNo == 1) {
+		return x > 0;
+	} else if (transformationNo == 2) {
+		return y > 0;
+	} else if (transformationNo == 3) {
+		return x > y;
+	}
+	// Serious error occured:
+	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConsraint");
+	return -1; 
+}
+
+
