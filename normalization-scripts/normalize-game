@@ -8,35 +8,40 @@
 #	3. x >= y
 # Usage: ./normalize-game filename-in filename-out
 
-game=`cat`
+# If any arguments, use first one as games filename, else read from the pipe
+game=""
+if [[ "$#" -gt 0 ]]; then
+	game=`cat "$1"`
+else
+	game=`cat`
+fi
 
 boardSize=`echo "$game" | grep '^SZ\[' | tr -d 'SZ[]'`
-moveList=`echo "$game" | grep '^;[BW]\[[a-z][a-z]\]$' | tr -d ';BW[]'`
+moves=`echo "$game" | grep '^;[BW]\[[a-z][a-z]\]$' | tr -d ';BW[]'`
 
 transformations=0
-# Find necesary trasformations for game to be normalized
-for move in "$moveList"; do
+# Find necesary trasformations for game to be normalized.
+while read -r move; do
 	transformations=`find-transformations "$move" "$boardSize" "$transformations"`
 	# If all transformations freeze bits (bits 4 to 6) have been set then break.
-	if [[ "$transformations" -ge '56' ]]; then
+	if [[ "$transformations" -ge 55 ]]; then
 		break
 	fi
-done
+done <<< "$moves"
 
-# Normalize game with them
-for line in "$game"; do
+# Transform game using transformations.
+while read -r line; do
 	# If line contains a move
 	if [[ -n `echo "$line" | grep '^;[BW]\[[a-z][a-z]\]$'` ]]; then
-		# Get the move
-		move=`echo "line" | tr -d ';BW[]'`
-		# Transform it
+		# get the move,
+		move=`echo "$line" | tr -d ';BW[]'`
+		# transform it,
 		transformedMove=`transform-move "$move" "$boardSize" "$transformations"`
-		# Print the line with transformed move
+		# and print the line with transformed move,
 		echo `echo "$line" | grep '^;[BW]\[' -o`"$transformedMove"\]
-	# otherwise
+	# otherwise just print the line.
 	else
-		# just print the line
 		echo "$line"
 	fi
-done
+done <<< "$game"
 
