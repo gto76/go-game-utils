@@ -29,6 +29,8 @@ while read -r move; do
 	fi
 done <<< "$moves"
 
+#echo "TRANS: $transformations TRANSEND"
+
 # Transform game using transformations.
 while read -r line; do
 	# If line contains a move
