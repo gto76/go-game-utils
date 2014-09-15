@@ -1,0 +1,21 @@
+#!/bin/bash
+
+USAGE="winner [game file]"
+EXPLANATION="Prints winner of the passed game."
+
+if [[ "$?" -eq 0 ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+fi
+
+#########
+
+game=`cat "$1"`
+
+while read -r line; do
+	result=`echo "$line" | grep '^RE\[.*$'` 
+	if [[ -n "$result" ]]; then
+		echo `echo "$result" | grep '[WB]' -o`
+		break
+	fi
+done <<< "$game"
+

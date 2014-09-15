@@ -1,0 +1,18 @@
+#!/bin/bash
+
+USAGE="./download-all-games game-list-ids"
+EXPLANATION="Downloads all games specified in file passed as first argument, saves them in games directory"
+
+if [[ "$?" -eq 0 ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+fi
+
+#########
+
+mkdir games
+
+while read line; do
+    gameId="$line"
+	wget https://online-go.com/api/v1/games/"$gameId"/sgf -O games/"$gameId".sgf
+done < "$1"
+

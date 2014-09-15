@@ -1,0 +1,21 @@
+#!/bin/bash
+
+USAGE="first-move [game file]"
+EXPLANATION="Prints first move of the passed game."
+
+if [[ "$?" -eq 0 ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+fi
+
+#########
+
+game=`cat "$1"`
+
+while read -r line; do
+	move=`echo "$line" | grep '^;[BW]\[[a-z][a-z]\]$'`
+	if [[ -n "$move" ]]; then
+		echo `echo "$move" | tr -d ';BW[]'`
+		break
+	fi
+done <<< "$game"
+

@@ -1,4 +1,0 @@
-#!/bin/bash
-# Pass this script filename of html file with list of games and it will return this games urls, one per line
-# Usage ./get-game-ids-from-html game-list-html
-cat "$1" | grep /game | sed 's/class.*//g' | sed 's/[^0-9]*//g'

@@ -1,12 +1,18 @@
 #!/bin/bash
 
-# Transforms all moves in a game using rotation and mirroring, so that first move is always in south-east side of upper right corner and also so that if possible first move that is not in that area is in south-east side of whole board.
-# To put it another way:
-# Transforms game using rotation and mirroring, so that as much moves in a row, beginning with the first one satisfy the following rules:
-#	1. x >= 0
-#	2. y >= 0
-#	3. x >= y
-# Usage: ./normalize-game filename-in filename-out
+USAGE="./normalize-game filename-in filename-out"
+EXPLANATION="Transforms all moves in a game using rotation and mirroring, so that first move is always in south-east side of upper right corner and also so that if possible first move that is not in that area is in south-east side of whole board.\n\
+To put it another way:\n\
+Transforms game using rotation and mirroring, so that as much moves in a row, beginning with the first one satisfy the following rules:\n\
+	1. x >= 0\n\
+	2. y >= 0\n\
+	3. x >= y\n"
+
+if [[ "$?" -eq 0 ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+fi
+
+#########
 
 # If any arguments, use first one as games filename, else read from the pipe
 game=""
@@ -46,4 +52,3 @@ while read -r line; do
 		echo "$line"
 	fi
 done <<< "$game"
-

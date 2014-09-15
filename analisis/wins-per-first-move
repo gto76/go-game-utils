@@ -1,0 +1,27 @@
+#!/bin/bash
+
+USAGE="wins-per-first-move [game files]..."
+EXPLANATION="Prints number of wins and loses for every starting move among the passed games. Only analyzes 9x9 games."
+
+if [[ "$?" -eq 0 ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+fi
+
+#########
+
+for game in "$@"; do 
+	size=`board-size "$game"` 
+	if [[ "$size" != '9' ]] 
+		then continue 
+	fi 
+	winner=`winner "$game"` 
+	if [[ -z "$winner" ]] 
+		then continue 
+	fi 
+	firstMove=`first-move "$game"` 
+	if [[ -z "$firstMove" ]] 
+		then continue 
+	fi 
+	echo "$firstMove $winner" 
+done | sort | uniq -c
+
