@@ -6,5 +6,4 @@ transform-move
 .*.*.swp
 test
 ngames
-bin
 find-transformations-main
