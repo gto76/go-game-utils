@@ -48,9 +48,3 @@ int transformMove(char *letters) {
 	getAlphabeticXY(x, y, boardSize, letters);
 }
 
-// Transform back from number coordinates to letter ones.
-//int getLetterCoordinates(int x, int y, char *letters) {
-//	letters[0] = x + boardSize/2 + 97;
-//	letters[1] = y + boardSize/2 + 97;
-//	letters[2] = '\0';
-//}

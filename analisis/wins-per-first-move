@@ -3,7 +3,7 @@
 USAGE="wins-per-first-move [game files]..."
 EXPLANATION="Prints number of wins and loses for every starting move among the passed games. Only analyzes 9x9 games."
 
-if [[ "$?" -eq 0 ]]; then
+if [[ "$#" -eq 0 ]]; then
 	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
 fi
 

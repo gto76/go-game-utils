@@ -19,7 +19,9 @@ const char* results[][SIZE] = {
 };
 
 int main() {
+	printf("Testing findTransformations function, for all positions on a 9x9 borard with no predefined transformations.\n");
 	int i, j;
+	int areTheSame = 1;
 	printf("EXPECTED VALUES:\n");
 	for (i = 0; i < SIZE; i++) {
 		for (j = 0; j < SIZE; j++) {
@@ -36,8 +38,19 @@ int main() {
 			getAlphabeticXYFromIndexes(i, j, 9, letters);
 			long int decimalNo = findTransformations(letters, 9, 0);
 			printf("%d\t", decimalNo); 
+
+			long int decimalNoFromTable = strtol(results[i][j], 0, 2);
+			if (decimalNoFromTable != decimalNo) {
+				areTheSame = 0;
+			}
 		}
 		printf("\n");
+	}
+
+	if (areTheSame) {
+		printf("TEST PASSED! All the values are the same.\n"); 
+	} else {
+		printf("TEST FAILED! Some values are not the same.\n"); 
 	}
 
 }

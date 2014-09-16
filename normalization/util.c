@@ -30,7 +30,8 @@ int getAlphabeticX(int i, int boardSize) {
 }
 
 int getAlphabeticY(int i, int boardSize) {
-	return boardSize/2 + (i + 97);
+	//return boardSize/2 + (i + 97);
+	return 97 + boardSize/2 - i;
 }
 
 int getAlphabeticXY(int x, int y, int boardSize, char *letters) {

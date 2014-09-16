@@ -58,12 +58,16 @@ int findTransformations(char *move, int boardSize, int transformations) {
 			unsetTransformationBit(transformationNo, &transformations);
 		} else {
 			setTransformationBit(transformationNo, &transformations);
+			x = transformX(x, y, transformationNo);
+			y = transformY(x, y, transformationNo);
 		}
 		// Freeze transformation.
 		setTransformationBit(i, &transformations);
 	}
 	return transformations;
 }
+
+//////////////////
 
 int satisfiesConstraintRegardlesOfTransformation(int transformationNo, int x, int y) {
 	if (transformationNo == 1) {
@@ -74,7 +78,7 @@ int satisfiesConstraintRegardlesOfTransformation(int transformationNo, int x, in
 		return x == y;
 	}
 	// Serious error occured:
-	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConstraintRegardlesOfTransformation");
+	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConstraintRegardlesOfTransformation: Transformation number is out of bounds: %n", transformationNo);
 	return -1; 
 }
 
@@ -87,8 +91,29 @@ int satisfiesConstraint(int transformationNo, int x, int y) {
 		return x > y;
 	}
 	// Serious error occured:
-	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConsraint");
+	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConsraint: Transformation number is out of bounds: %n", transformationNo);
 	return -1; 
 }
 
+/////////////////
+
+int transformX(int x, int y, int transformationNo) {
+	if (transformationNo == 1) {
+		return -x;
+	} else if (transformationNo == 2) {
+		return x;
+	} else if (transformationNo == 3) {
+		return y;
+	}
+}	
+
+int transformY(int x, int y, int transformationNo) {
+	if (transformationNo == 1) {
+		return y;
+	} else if (transformationNo == 2) {
+		return -y;
+	} else if (transformationNo == 3) {
+		return x;
+	}
+}	
 

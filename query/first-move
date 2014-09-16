@@ -3,7 +3,7 @@
 USAGE="first-move [game file]"
 EXPLANATION="Prints first move of the passed game."
 
-if [[ "$?" -eq 0 ]]; then
+if [[ "$#" -eq 0 ]]; then
 	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
 fi
 

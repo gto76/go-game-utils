@@ -17,5 +17,8 @@ As many consecutive moves as posible from the start of the game should satisfy t
 	2. y >= 0
 	3. x >= y
 
+Optimization:
+Normalize-game takes on average 0.8s per game.
+
 
 

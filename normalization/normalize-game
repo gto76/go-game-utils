@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE="./normalize-game filename-in filename-out"
+USAGE="./normalize-game filename-in"
 EXPLANATION="Transforms all moves in a game using rotation and mirroring, so that first move is always in south-east side of upper right corner and also so that if possible first move that is not in that area is in south-east side of whole board.\n\
 To put it another way:\n\
 Transforms game using rotation and mirroring, so that as much moves in a row, beginning with the first one satisfy the following rules:\n\
@@ -8,19 +8,14 @@ Transforms game using rotation and mirroring, so that as much moves in a row, be
 	2. y >= 0\n\
 	3. x >= y\n"
 
-if [[ "$?" -eq 0 ]]; then
+if [[ "$#" -eq 0 ]]; then
 	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
 fi
 
 #########
 
-# If any arguments, use first one as games filename, else read from the pipe
-game=""
-if [[ "$#" -gt 0 ]]; then
-	game=`cat "$1"`
-else
-	game=`cat`
-fi
+# If any arguments, use first one as games filename
+game=`cat "$1"`
 
 boardSize=`echo "$game" | grep '^SZ\[' | tr -d 'SZ[]'`
 moves=`echo "$game" | grep '^;[BW]\[[a-z][a-z]\]$' | tr -d ';BW[]'`
@@ -28,7 +23,7 @@ moves=`echo "$game" | grep '^;[BW]\[[a-z][a-z]\]$' | tr -d ';BW[]'`
 transformations=0
 # Find necesary trasformations for game to be normalized.
 while read -r move; do
-	transformations=`find-transformations "$move" "$boardSize" "$transformations"`
+	transformations=`find-transformations-main "$move" "$boardSize" "$transformations"`
 	# If all transformations freeze bits (bits 4 to 6) have been set then break.
 	if [[ "$transformations" -ge 55 ]]; then
 		break

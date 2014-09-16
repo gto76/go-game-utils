@@ -3,7 +3,7 @@
 USAGE="winner [game file]"
 EXPLANATION="Prints winner of the passed game."
 
-if [[ "$?" -eq 0 ]]; then
+if [[ "$#" -eq 0 ]]; then
 	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
 fi
 
