@@ -39,7 +39,7 @@ while read -r line; do
 		# get the move,
 		move=`echo "$line" | tr -d ';BW[]'`
 		# transform it,
-		transformedMove=`transform-move "$move" "$boardSize" "$transformations"`
+		transformedMove=`transform-move-main "$move" "$boardSize" "$transformations"`
 		# and print the line with transformed move,
 		echo `echo "$line" | grep '^;[BW]\[' -o`"$transformedMove"\]
 	# otherwise just print the line.

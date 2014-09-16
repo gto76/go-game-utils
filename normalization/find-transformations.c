@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #include "util.h"
+#include "transform-move.h"
 
 // Transformations int with value 27 gets decoded in this way:
 //
@@ -40,6 +41,7 @@
 int findTransformations(char *move, int boardSize, int transformations) {
 	int x = getNumericX(move[0], boardSize);
 	int y = getNumericY(move[1], boardSize);
+	transformXY(&x, &y, transformations);
 	int i;	
 	// Loop trough transformations.
 	for	(i = 4; i <= 6; i++) {
