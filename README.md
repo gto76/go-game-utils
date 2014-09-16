@@ -10,3 +10,12 @@ Different scripts that help you download your games from www.online-go.com websi
 normalization-scripts
 ---------------------
 Main script will 'normalize' your game using rotation and mirroring of the board using predefined criteria defining on which part of the board should the first moves be played. This way the games that start with identical opening, but with rotated or mirrored orientation will now have the same rotation and mirroring, thus will have the same opening moves. (Useful for analysis of openings, your winnig percentage for every move, and so on..)
+
+Definition of normalized game:
+As many consecutive moves as posible from the start of the game should satisfy the folloving rules:
+	1. x >= 0
+	2. y >= 0
+	3. x >= y
+
+
+

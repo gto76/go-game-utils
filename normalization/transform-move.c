@@ -32,8 +32,8 @@ int main(int argc, char **argv) {
 ////////////////////////////////////
 
 int transformMove(char *letters) {
-	int x = getNumericalCoordinate(move[0], boardSize);
-	int y = getNumericalCoordinate(move[1], boardSize);
+	int x = getNumericX(move[0], boardSize);
+	int y = getNumericY(move[1], boardSize);
 	if (getTransformationBit(1, transformations)) {
 		x *= -1;
 	}
@@ -45,12 +45,12 @@ int transformMove(char *letters) {
 		x = y;
 		y = tmp;
 	}
-	getLetterCoordinates(x, y, letters);
+	getAlphabeticXY(x, y, boardSize, letters);
 }
 
 // Transform back from number coordinates to letter ones.
-int getLetterCoordinates(int x, int y, char *letters) {
-	letters[0] = x + boardSize/2 + 97;
-	letters[1] = y + boardSize/2 + 97;
-	letters[2] = '\0';
-}
+//int getLetterCoordinates(int x, int y, char *letters) {
+//	letters[0] = x + boardSize/2 + 97;
+//	letters[1] = y + boardSize/2 + 97;
+//	letters[2] = '\0';
+//}
