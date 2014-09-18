@@ -18,7 +18,10 @@ As many consecutive moves as posible from the start of the game should satisfy t
 	3. x >= y
 
 Optimization:
-Normalize-game takes on average 0.8s per game.
+Normalize-game-script takes on average 0.8s per game.
 
 
+getBoardSize (300x)
+bash: 1.4s
+c: 0.5 s
 
