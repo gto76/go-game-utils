@@ -80,7 +80,7 @@ int satisfiesConstraintRegardlesOfTransformation(int transformationNo, int x, in
 		return x == y;
 	}
 	// Serious error occured:
-	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConstraintRegardlesOfTransformation: Transformation number is out of bounds: %n", transformationNo);
+	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConstraintRegardlesOfTransformation: Transformation number is out of bounds: %d", transformationNo);
 	return -1; 
 }
 
@@ -93,7 +93,7 @@ int satisfiesConstraint(int transformationNo, int x, int y) {
 		return x > y;
 	}
 	// Serious error occured:
-	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConsraint: Transformation number is out of bounds: %n", transformationNo);
+	fprintf(stderr, "find-transformations: Illegal argument exception in function satisfiesConsraint: Transformation number is out of bounds: %d", transformationNo);
 	return -1; 
 }
 

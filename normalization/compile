@@ -1,4 +1,4 @@
 gcc -o find-transformations-main find-transformations-main.c find-transformations.c util.c argument-checker.c transform-move.c -w
 gcc -o transform-move-main transform-move-main.c transform-move.c util.c argument-checker.c -w
 gcc -o test-find-transformations test-find-transformations.c util.c find-transformations.c transform-move.c -w
-gcc -o normalize-game normalize-game.c -w
+gcc -o normalize-game normalize-game.c find-transformations.c util.c transform-move.c -w
