@@ -1,3 +1,5 @@
+# My custom ignores:
+
 games
 a.out
 find-transformations
@@ -8,3 +10,35 @@ test
 ngames
 find-transformations-main
 transform-move-main
+
+# Standard C ignores:
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
