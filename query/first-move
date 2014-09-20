@@ -1,10 +1,10 @@
 #!/bin/bash
 
-USAGE="first-move [game file]"
-EXPLANATION="Prints first move of the passed game."
+USAGE=`basename "$0"`" [game file]"
+DESCRIPTION="Prints first move of the passed game."
 
-if [[ "$#" -eq 0 ]]; then
-	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
 fi
 
 #########

@@ -1,21 +1,13 @@
 #!/bin/bash
 
-USAGE="board-size [game file]"
-EXPLANATION="Prints board size of the passed game."
+USAGE=`basename "$0"`" [game file]"
+DESCRIPTION="Prints board size of the passed game."
 
-if [[ "$#" -eq 0 ]]; then
-	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
 fi
 
 #########
 
-game=`cat "$1"`
-
-while read -r line; do
-	result=`echo "$line" | grep '^SZ\[.*$'` 
-	if [[ -n "$result" ]]; then
-		echo `echo "$result" | grep '[0-9]*' -o`
-		break
-	fi
-done <<< "$game"
+query-game-for "$1" SZ
 

@@ -10,6 +10,7 @@ test
 ngames
 find-transformations-main
 transform-move-main
+bin
 
 # Standard C ignores:
 

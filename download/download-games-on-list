@@ -1,10 +1,10 @@
 #!/bin/bash
 
-USAGE="./download-games-on-list game-list-ids"
-EXPLANATION="Downloads from www.online-go.com all games with id specified in file passed as first argument, saves them in games directory"
+USAGE=`basename "$0"`" game-list-ids"
+DESCRIPTION="Downloads from www.online-go.com all games with id specified in file passed as first argument, saves them in games directory"
 
-if [[ "$#" -eq 0 ]]; then
-	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
 fi
 
 #########

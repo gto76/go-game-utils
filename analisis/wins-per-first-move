@@ -1,10 +1,10 @@
 #!/bin/bash
 
-USAGE="wins-per-first-move [game files]..."
-EXPLANATION="Prints number of wins and loses for every starting move among the passed games. Only analyzes 9x9 games."
+USAGE=`basename "$0"`" [game files]..."
+DESCRIPTION="Prints number of wins and loses for every starting move among the passed games. Only analyzes 9x9 games."
 
-if [[ "$#" -eq 0 ]]; then
-	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+if [[ "$#" -eq 0 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
 fi
 
 #########

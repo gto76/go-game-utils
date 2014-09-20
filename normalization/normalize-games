@@ -1,0 +1,16 @@
+#!/bin/bash
+
+USAGE=`basename "$0"`" [game files]..."
+DESCRIPTION="Normalizes all passed games. Overwrites existing file with normalized version."
+
+if [[ "$#" -eq 0 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
+fi
+
+#########
+
+for game in "$@"; do 
+	normalize-game "$game" > tmp
+	mv -f tmp "$game"
+done 
+

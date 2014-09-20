@@ -1,10 +1,10 @@
 #!/bin/bash
 
-USAGE="./get-game-ids-from-html game-list-html"
-EXPLANATION="Pass this script filename of html file with list of games and it will return this games urls, one per line."
+USAGE=`basename "$0"`" game-list-html"
+DESCRIPTION="Pass this script filename of html file with list of games and it will return this games urls, one per line."
 
-if [[ "$#" -eq 0 ]]; then
-	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
 fi
 
 #########

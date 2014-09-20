@@ -1,21 +1,13 @@
 #!/bin/bash
 
-USAGE="winner [game file]"
-EXPLANATION="Prints winner of the passed game."
+USAGE=`basename "$0"`" [game file]"
+DESCRIPTION="Prints winner of the passed game."
 
-if [[ "$#" -eq 0 ]]; then
-	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
 fi
 
 #########
 
-game=`cat "$1"`
-
-while read -r line; do
-	result=`echo "$line" | grep '^RE\[.*$'` 
-	if [[ -n "$result" ]]; then
-		echo `echo "$result" | grep '[WB]' -o`
-		break
-	fi
-done <<< "$game"
+query-game-for "$1" RE |  grep -o ^[WB]
 

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+USAGE=`basename "$0"`" [game file] [field]"
+DESCRIPTION="Queries game for content of field."
+
+if [[ "$#" -ne 2 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
+fi
+
+#########
+
+cat "$1" | grep "^$2\[.*\]" | sed "s/^$2\[\(.*\)\]/\1/"

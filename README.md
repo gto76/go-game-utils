@@ -14,6 +14,7 @@ $ make
 $ export PATH="$PATH:`pwd`/bin" 
 $ download-games {1000-1010}
 $ cd games
+$ normalize-games *
 $ wins-per-first-move *
 ```
 
