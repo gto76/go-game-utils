@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+# Creates symbolic links to scripts, so that they are all accessible through ./bin directory
+
+echo "$0: creating links..."
+
+for a in *; do 
+	if [[ ! -d "$a" ]]; then 
+		continue
+	fi
+	if [[ "$a" == bin ]]; then 
+		continue
+	fi
+	cd "$a"
+	for b in *; do 
+		if [[ -x "$b" ]]; then 
+			cd ../bin
+			ln -s ../"$a"/"$b"
+			cd ../"$a"
+		fi
+	done; 
+	cd ..; 
+done

@@ -1,7 +1,21 @@
 Go Utilities
 ============
 
-Utilities for ancient board game of Go.
+* Go is an aicent board game invented at least 4000 years ago in China. 
+* Utilities are made to help you download, transform and query games stored in sgf format. 
+* Main usecase of this utilities is analysys of effectivness of different openings on a 9x9 board. Simple example is `ananisis/wins-per-first-move` script, that calculates winning percentage for every starting move in passed games.
+
+How to run:
+-----------
+```bash
+$ git clone https://github.com/gto76/go-utilities.git
+$ cd go-utilities
+$ make
+$ export PATH="$PATH:`pwd`/bin" 
+$ download-games {1000-1010}
+$ cd games
+$ wins-per-first-move *
+```
 
 download
 --------

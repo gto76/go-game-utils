@@ -1,7 +1,7 @@
 #!/bin/bash
 
-USAGE="./download-all-games game-list-ids"
-EXPLANATION="Downloads all games specified in file passed as first argument, saves them in games directory"
+USAGE="./download-games-on-list game-list-ids"
+EXPLANATION="Downloads from www.online-go.com all games with id specified in file passed as first argument, saves them in games directory"
 
 if [[ "$#" -eq 0 ]]; then
 	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit

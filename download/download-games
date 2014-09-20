@@ -1,0 +1,17 @@
+#!/bin/bash
+
+USAGE="./download-games [game id]..."
+EXPLANATION="Downloads specified games from www.online-go.com, saves them in games directory"
+
+if [[ "$#" -eq 0 ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$EXPLANATION"; exit
+fi
+
+#########
+
+mkdir games
+
+for gamedId in "$@"; do
+	wget https://online-go.com/api/v1/games/"$gameId"/sgf -O games/"$gameId".sgf
+done
+
