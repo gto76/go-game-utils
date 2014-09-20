@@ -4,6 +4,8 @@
 
 echo "$0: creating links..."
 
+mkdir -p bin
+
 for a in *; do 
 	if [[ ! -d "$a" ]]; then 
 		continue
