@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE=`basename "$0"`" [game id]..."
+USAGE=`basename "$0"`" [GAME ID]..."
 DESCRIPTION="Downloads specified games from www.online-go.com, saves them in games directory"
 
 if [[ "$#" -eq 0 || "$1" == "--help" ]]; then

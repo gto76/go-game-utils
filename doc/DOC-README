@@ -1,0 +1,2 @@
+generate-readme script takes README.template file and adds descriptions of all commands to it and prints the result to stdout. Its output should be saved into README.md in projects root before every commit, using pre-commit git hook (located in .git/hooks). All blank lines of README.template should have one space in them so they don't get dropped.
+

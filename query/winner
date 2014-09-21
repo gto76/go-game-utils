@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE=`basename "$0"`" [game file]"
+USAGE=`basename "$0"`" [SGF FILE]"
 DESCRIPTION="Prints winner of the passed game."
 
 if [[ "$#" -ne 1 || "$1" == "--help" ]]; then

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE=`basename "$0"`" game-list-ids"
+USAGE=`basename "$0"`" [FILE CONTAINING GAME ID-S]"
 DESCRIPTION="Downloads from www.online-go.com all games with id specified in file passed as first argument, saves them in games directory"
 
 if [[ "$#" -ne 1 || "$1" == "--help" ]]; then

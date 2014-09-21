@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# Adds basic description and usage of every command into README.template and prints result to stdout. The README.template should have spaces in empty lines, so that empty lines dont get droped when adding explanations.
+
+printFunctionDescriptions() {
+	if [[ ! -d "$1" ]]; then
+		return
+	fi
+	cd "$1"
+	for b in *;	do 
+		if [[ ! -x "$b" ]];	then 
+			continue
+		fi
+		echo "* $b"
+		echo -n "Usage: $b"
+		cat "$b" | grep ^USAGE | sed 's/^.*"`"//' | tr -d '"'
+		cat "$b" | grep ^DESCRIPTION | sed 's/^.*="//' | tr -d '"'
+		echo
+	done
+	cd ..
+}
+
+lastLine=""
+lastHeading=""
+
+SAVEIFS=$IFS
+IFS=$'\n'
+for a in `cat README.template`; do
+	if [[ -n `echo "$a" | grep -e ----` ]]; then
+		if [[ -n "$lastHeading" ]]; then
+			printFunctionDescriptions "$lastHeading"
+		fi
+		lastHeading="$lastLine"
+	fi
+	echo "$lastLine"
+	lastLine="$a"
+done
+echo "$lastLine"
+printFunctionDescriptions "$lastHeading"
+IFS=$SAVEIFS
+

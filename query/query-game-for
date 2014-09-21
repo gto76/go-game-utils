@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE=`basename "$0"`" [game file] [field]"
+USAGE=`basename "$0"`" [SGF FILE] [FIELD]"
 DESCRIPTION="Queries game for content of field."
 
 if [[ "$#" -ne 2 || "$1" == "--help" ]]; then

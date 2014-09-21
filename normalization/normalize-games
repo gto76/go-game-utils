@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE=`basename "$0"`" [game files]..."
+USAGE=`basename "$0"`" [SGF FILE]..."
 DESCRIPTION="Normalizes all passed games. Overwrites existing file with normalized version."
 
 if [[ "$#" -eq 0 || "$1" == "--help" ]]; then

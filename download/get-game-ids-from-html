@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE=`basename "$0"`" game-list-html"
+USAGE=`basename "$0"`" [HTML FILE WITH LINKS TO GAMES]"
 DESCRIPTION="Pass this script filename of html file with list of games and it will return this games urls, one per line."
 
 if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
