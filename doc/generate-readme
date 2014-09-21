@@ -11,9 +11,10 @@ printFunctionDescriptions() {
 		if [[ ! -x "$b" ]];	then 
 			continue
 		fi
-		echo "* $b"
-		echo -n "Usage: $b"
-		cat "$b" | grep ^USAGE | sed 's/^.*"`"//' | tr -d '"'
+		echo "### [**\`$b\`**]($1/$b)"
+		echo -n "Usage: \`$b"
+		cat "$b" | grep ^USAGE | sed 's/^.*"`"//' | tr -d '"\n'
+		echo "\`"
 		cat "$b" | grep ^DESCRIPTION | sed 's/^.*="//' | tr -d '"'
 		echo
 	done
