@@ -78,4 +78,3 @@ This scripts are the reason for all the others.
 Usage: wins-per-first-move [SGF FILE]...
 Prints number of wins and loses for every starting move among the passed games. Only analyzes 9x9 games.
 
-FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
