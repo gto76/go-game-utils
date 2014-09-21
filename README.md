@@ -26,17 +26,17 @@ Different scripts that help you download your games from www.online-go.com websi
  
 ##### [**`download-games`**](download/download-games)
 Usage: `download-games [GAME ID]...`
-
+ 
 Downloads specified games from www.online-go.com, saves them in games directory
 
 ##### [**`download-games-on-list`**](download/download-games-on-list)
 Usage: `download-games-on-list [FILE CONTAINING GAME ID-S]`
-
+ 
 Downloads from www.online-go.com all games with id specified in file passed as first argument, saves them in games directory
 
 ##### [**`get-game-ids-from-html`**](download/get-game-ids-from-html)
 Usage: `get-game-ids-from-html [HTML FILE WITH LINKS TO GAMES]`
-
+ 
 Pass this script filename of html file with list of games and it will return this games urls, one per line.
 
 normalization
@@ -51,7 +51,7 @@ As many consecutive moves as possible from the start of the game should satisfy 
  
 ##### [**`normalize-games`**](normalization/normalize-games)
 Usage: `normalize-games [SGF FILE]...`
-
+ 
 Normalizes all passed games. Overwrites existing file with normalized version.
 
 query
@@ -60,22 +60,22 @@ Just a basic scripts that search through passed game-file and print requested in
  
 ##### [**`board-size`**](query/board-size)
 Usage: `board-size [SGF FILE]`
-
+ 
 Prints board size of the passed game.
 
 ##### [**`first-move`**](query/first-move)
 Usage: `first-move [SGF FILE]`
-
+ 
 Prints first move of the passed game.
 
 ##### [**`query-game-for`**](query/query-game-for)
 Usage: `query-game-for [SGF FILE] [FIELD]`
-
+ 
 Queries game for content of field.
 
 ##### [**`winner`**](query/winner)
 Usage: `winner [SGF FILE]`
-
+ 
 Prints winner of the passed game.
 
 analysis
@@ -84,6 +84,6 @@ This scripts are the reason for all the others.
  
 ##### [**`wins-per-first-move`**](analysis/wins-per-first-move)
 Usage: `wins-per-first-move [SGF FILE]...`
-
+ 
 Prints number of wins and loses for every starting move among the passed games. Only analyzes 9x9 games.
 
