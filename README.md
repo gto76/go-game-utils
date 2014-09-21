@@ -4,7 +4,7 @@ Go Utilities
  
 * Go is an ancient board game invented at least 4000 years ago in China. 
 * Utilities are made to help you download, transform and query games stored in sgf format. 
-* Main use-case of this utilities is statistical analysis of effectiveness of different openings on a 9x9 board. Simple example is `analisis/wins-per-first-move` script, that calculates winning percentage for every starting move in passed games.
+* Main use-case of this utilities is statistical analysis of effectiveness of different openings on a 9x9 board. Simple example is [**\`wins-per-first-move\`**](analisis/wins-per-first-move) script, that calculates winning percentage for every starting move in passed games.
  
 How to run:
 -----------
@@ -27,12 +27,12 @@ Different scripts that help you download your games from www.online-go.com websi
 ##### [**`download-games`**](download/download-games)
 * Usage: `download-games [GAME ID]...`
 
-* Downloads specified games from www.online-go.com, saves them in games directory
+* Downloads specified games from www.online-go.com, saves them in games directory.
 
 ##### [**`download-games-on-list`**](download/download-games-on-list)
 * Usage: `download-games-on-list [FILE CONTAINING GAME ID-S]`
 
-* Downloads from www.online-go.com all games with id specified in file passed as first argument, saves them in games directory
+* Downloads from www.online-go.com all games with id specified in file passed as first argument, saves them in games directory.
 
 ##### [**`get-game-ids-from-html`**](download/get-game-ids-from-html)
 * Usage: `get-game-ids-from-html [HTML FILE WITH LINKS TO GAMES]`
