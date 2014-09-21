@@ -15,7 +15,6 @@ printFunctionDescriptions() {
 		echo -n "Usage: \`$b"
 		cat "$b" | grep ^USAGE | sed 's/^.*"`"//' | tr -d '"\n'
 		echo "\`"
-		echo " "
 		cat "$b" | grep ^DESCRIPTION | sed 's/^.*="//' | tr -d '"'
 		echo
 	done
