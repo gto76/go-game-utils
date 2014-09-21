@@ -25,7 +25,8 @@ lastHeading=""
 
 SAVEIFS=$IFS
 IFS=$'\n'
-for a in `cat README.template`; do
+cd ..
+for a in `cat doc/README.template`; do
 	if [[ -n `echo "$a" | grep -e ----` ]]; then
 		if [[ -n "$lastHeading" ]]; then
 			printFunctionDescriptions "$lastHeading"
