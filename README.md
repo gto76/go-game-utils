@@ -24,16 +24,19 @@ download
 --------
 Different scripts that help you download your games from www.online-go.com website (as of now the website doesn't enable you to download all of your games at once, so you have to go to your games list, inspect the element with your browse, copy the raw html, save it to the file and pass the filename to the script, which then downloads the games. Since most games that can be shown per page is 50, you have to repeat the procedure 50 games at the time)
  
-#### [**`download-games`**](download/download-games)
-Usage: `download-games [GAME ID]...`\n
+##### [**`download-games`**](download/download-games)
+Usage: `download-games [GAME ID]...`
+
 Downloads specified games from www.online-go.com, saves them in games directory
 
-#### [**`download-games-on-list`**](download/download-games-on-list)
-Usage: `download-games-on-list [FILE CONTAINING GAME ID-S]`\n
+##### [**`download-games-on-list`**](download/download-games-on-list)
+Usage: `download-games-on-list [FILE CONTAINING GAME ID-S]`
+
 Downloads from www.online-go.com all games with id specified in file passed as first argument, saves them in games directory
 
-#### [**`get-game-ids-from-html`**](download/get-game-ids-from-html)
-Usage: `get-game-ids-from-html [HTML FILE WITH LINKS TO GAMES]`\n
+##### [**`get-game-ids-from-html`**](download/get-game-ids-from-html)
+Usage: `get-game-ids-from-html [HTML FILE WITH LINKS TO GAMES]`
+
 Pass this script filename of html file with list of games and it will return this games urls, one per line.
 
 normalization
@@ -46,35 +49,41 @@ As many consecutive moves as possible from the start of the game should satisfy 
 	2. y >= 0
 	3. x >= y
  
-#### [**`normalize-games`**](normalization/normalize-games)
-Usage: `normalize-games [SGF FILE]...`\n
+##### [**`normalize-games`**](normalization/normalize-games)
+Usage: `normalize-games [SGF FILE]...`
+
 Normalizes all passed games. Overwrites existing file with normalized version.
 
 query
 -----
 Just a basic scripts that search through passed game-file and print requested information, like the winner of the game or board size...
  
-#### [**`board-size`**](query/board-size)
-Usage: `board-size [SGF FILE]`\n
+##### [**`board-size`**](query/board-size)
+Usage: `board-size [SGF FILE]`
+
 Prints board size of the passed game.
 
-#### [**`first-move`**](query/first-move)
-Usage: `first-move [SGF FILE]`\n
+##### [**`first-move`**](query/first-move)
+Usage: `first-move [SGF FILE]`
+
 Prints first move of the passed game.
 
-#### [**`query-game-for`**](query/query-game-for)
-Usage: `query-game-for [SGF FILE] [FIELD]`\n
+##### [**`query-game-for`**](query/query-game-for)
+Usage: `query-game-for [SGF FILE] [FIELD]`
+
 Queries game for content of field.
 
-#### [**`winner`**](query/winner)
-Usage: `winner [SGF FILE]`\n
+##### [**`winner`**](query/winner)
+Usage: `winner [SGF FILE]`
+
 Prints winner of the passed game.
 
 analysis
 --------
 This scripts are the reason for all the others.
  
-#### [**`wins-per-first-move`**](analysis/wins-per-first-move)
-Usage: `wins-per-first-move [SGF FILE]...`\n
+##### [**`wins-per-first-move`**](analysis/wins-per-first-move)
+Usage: `wins-per-first-move [SGF FILE]...`
+
 Prints number of wins and loses for every starting move among the passed games. Only analyzes 9x9 games.
 
