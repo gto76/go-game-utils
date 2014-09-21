@@ -1,0 +1,30 @@
+#!/bin/bash
+
+USAGE=`basename "$0"`" [SGF FILE]..."
+DESCRIPTION="Deletes games with less then four moves, and games that were not played on 9x9 board."
+
+if [[ "$#" -eq 0 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
+fi
+
+#########
+noOfGames=`echo $@ | wc -w`
+i=1
+
+for game in "$@"; do 
+    echo `basename "$0"`": checking game no $i/$noOfGames: $game" >&2
+    size=`board-size "$game"` 
+    if [[ "$size" != '9' ]]; then 
+    	echo `basename "$0"`": deleting game $game" >&2
+		rm "$game"
+		continue 
+    fi
+    noOfMoves=`number-of-moves "$game"` 
+    if [[ "$noOfMoves" -lt 4 ]]; then 
+    	echo `basename "$0"`": deleting game $game" >&2
+		rm "$game"
+		continue 
+    fi
+	let i="$i"+1
+done
+

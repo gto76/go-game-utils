@@ -127,7 +127,7 @@ int getNextMove(FILE * gameFile, char * nextMove) {
 	}
 	return status; // If ececution comes to here, function couldnt find any more moves.
 	// TODO: this is not necesaryly an error, game could finish with resignation after two moves for instance.
-	// passi ( ;W[] ) se ne smejo izgubit, preveri tudi skripto!!!!
+	// passes ( ;W[] ) should not get lost
 }
 
 int getMoveFromLine(char * line, char * nextMove) {

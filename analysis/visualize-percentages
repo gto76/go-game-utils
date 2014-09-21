@@ -1,0 +1,60 @@
+#!/bin/bash
+
+USAGE=`basename "$0"`" [FILE CONTAINING OUTPUT FROM wins-per-first-move OR SIMILAR SCRIPT]"
+DESCRIPTION="Prints a go board with win percentages in fields that got entries in the passed file. Only for 9x9 games."
+
+if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
+fi
+
+#########
+
+printEmptyField() {
+	for a in {cc,ec,gc,ce,ee,ge,cg,eg,gg}; do
+		if [[ "$a" == "$1" ]]; then
+			echo -n "   *"
+			return
+		fi
+	done
+	echo -n "   -"
+}
+
+# $1 - file, $2 - field
+printPercentages() {
+	wins=`cat "$1" | grep "$2 B" | tr -d "a-zA-Z "`
+	loses=`cat "$1" | grep "$2 W" | tr -d "a-zA-Z "`
+	if [[ -z "$wins" ]]; then
+		wins=0
+	fi
+	if [[ -z "$loses" ]]; then
+		loses=0
+	fi
+	let sum="$wins"+"$loses"
+	percentage=`echo "scale=2;$wins/$sum" | bc | sed 's/.*\.//'`
+	if [[ "$percentage" == "00" ]]; then
+		percentage=" 100"
+	elif [[ "$percentage" == "0" ]]; then
+		percentage="   0"
+	else
+		percentage="  $percentage"
+	fi
+	echo -n "$percentage"
+}
+
+echo "    a   b   c   d   e   f   g   h   i"
+
+for y in {a..i}; do
+	echo -n "$y"
+	for x in {a..i}; do
+		# If there exists a record for the field print percentages,
+		# else just print empty field. 
+		if [[ -n `cat "$1" | grep "$x$y"` ]]; then
+			printPercentages "$1" "$x$y"
+		else
+			printEmptyField "$x$y"
+		fi
+	done
+	echo
+done
+
+

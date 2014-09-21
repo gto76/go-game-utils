@@ -13,11 +13,26 @@ $ git clone https://github.com/gto76/go-utilities.git
 $ cd go-utilities
 $ make
 $ export PATH="$PATH:`pwd`/bin" 
-$ download-games {1000-1010}
+$ download-games {1000-1030}
 $ cd games
+$ delete-unneeded-games *
 $ wins-per-first-move *
 ```
- 
+The end result of this sequence of commands is a diagram of 9x9 go board, showing winning percentages of different starting moves, and it should look something like that:
+```
+    a   b   c   d   e   f   g   h   i
+a   -   -   -   -   -   -   -   -   -
+b   -   -   -   -   -   -   -   -   -
+c   -   -   *   -   *   -  36   0   -
+d   -   -   -   -   -  46  51   -   -
+e   -   -   *   -  41  45  14 100   -
+f   -   -   -   -   -   -   -   -   -
+g   -   -   *   -   *   -   *   -   -
+h   -   -   -   -   -   -   -   -   -
+i   -   -   -   -   -   -   -   -   -
+```
+So we can see that in the observed games, 41% of players that started the game in the center of the board won the game. Also we can observe that percentages get unreliable at the edge of the board due to the small sample size.
+  
 Utilities consist of bash scripts and c programs that are grouped by functionality and reside in following folders: 
   
 download
@@ -63,10 +78,20 @@ Just a basic scripts that search through passed game-file and print requested in
 
 * Prints board size of the passed game.
 
+##### [**`delete-unneeded-games`**](query/delete-unneeded-games)
+* Usage: `delete-unneeded-games [SGF FILE]...`
+
+* Deletes games with less then four moves, and games that were not played on 9x9 board.
+
 ##### [**`first-move`**](query/first-move)
 * Usage: `first-move [SGF FILE]`
 
 * Prints first move of the passed game.
+
+##### [**`number-of-moves`**](query/number-of-moves)
+* Usage: `number-of-moves [SGF FILE]`
+
+* Prints number of moves in passed game.
 
 ##### [**`query-game-for`**](query/query-game-for)
 * Usage: `query-game-for [SGF FILE] [FIELD]`
@@ -82,6 +107,11 @@ analysis
 --------
 This scripts are the reason for all the others.
  
+##### [**`visualize-percentages`**](analysis/visualize-percentages)
+* Usage: `visualize-percentages [FILE CONTAINING OUTPUT FROM wins-per-first-move OR SIMILAR SCRIPT]`
+
+* Prints a go board with win percentages in fields that got entries in the passed file. Only for 9x9 games.
+
 ##### [**`wins-per-first-move`**](analysis/wins-per-first-move)
 * Usage: `wins-per-first-move [SGF FILE]...`
 

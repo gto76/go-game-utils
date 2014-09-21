@@ -9,7 +9,11 @@ fi
 
 #########
 
+noOfGames=`echo $@ | wc -w`
+i=1
+
 for game in "$@"; do 
+	echo `basename "$0"`": analizing game no $i/$noOfGames: $game" >&2
 	size=`board-size "$game"` 
 	if [[ "$size" != '9' ]] 
 		then continue 
@@ -23,5 +27,6 @@ for game in "$@"; do
 		then continue 
 	fi 
 	echo "$firstMove $winner" 
+	let i="$i"+1
 done | sort | uniq -c
 

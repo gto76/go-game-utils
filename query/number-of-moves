@@ -1,0 +1,12 @@
+#!/bin/bash
+
+USAGE=`basename "$0"`" [SGF FILE]"
+DESCRIPTION="Prints number of moves in passed game."
+
+if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
+fi
+
+#########
+
+cat "$1" | grep -P "^;[WB]\[.+\]" | wc -l
