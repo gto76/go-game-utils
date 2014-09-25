@@ -1,13 +1,14 @@
 #!/bin/bash
 
 USAGE=`basename "$0"`" [FILE CONTAINING OUTPUT FROM wins-per-first-move OR SIMILAR SCRIPT]"
-DESCRIPTION="Prints a go board with win percentages in fields that got entries in the passed file. Only for 9x9 games."
+DESCRIPTION="Prints a go board with win percentages in fields that got entries in the passed file. If '-' is passed instead of a filename, then it reads from pipe. Works correctly only with 9x9 games."
 
 if [[ "$#" -ne 1 || "$1" == "--help" ]]; then
 	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
 fi
 
 #########
+
 
 printEmptyField() {
 	for a in {cc,ec,gc,ce,ee,ge,cg,eg,gg}; do
@@ -41,20 +42,23 @@ printPercentages() {
 	echo -n "$percentage"
 }
 
-echo "    a   b   c   d   e   f   g   h   i"
+main() {
+	echo "    a   b   c   d   e   f   g   h   i"
 
-for y in {a..i}; do
-	echo -n "$y"
-	for x in {a..i}; do
-		# If there exists a record for the field print percentages,
-		# else just print empty field. 
-		if [[ -n `cat "$1" | grep "$x$y"` ]]; then
-			printPercentages "$1" "$x$y"
-		else
-			printEmptyField "$x$y"
-		fi
+	for y in {a..i}; do
+		echo -n "$y"
+		for x in {a..i}; do
+			# If there exists a record for the field print percentages,
+			# else just print empty field. 
+			if [[ -n `cat "$1" | grep "$x$y"` ]]; then
+				printPercentages "$1" "$x$y"
+			else
+				printEmptyField "$x$y"
+			fi
+		done
+		echo
 	done
-	echo
-done
+}
 
 
+main "$@"

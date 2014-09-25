@@ -1,0 +1,44 @@
+#!/bin/bash
+
+USAGE=`basename "$0"`" [MOVE]:... [SGF FILE]..."
+DESCRIPTION="Prints number of wins and loses for every move after the MOVEs among the passed games. Only analyzes 9x9 games."
+
+if [[ "$#" -lt 2 || "$1" == "--help" ]]; then
+	echo -e "Usage: $USAGE"; echo -e "$DESCRIPTION"; exit
+fi
+
+#########
+
+let noOfGames=`echo $@ | wc -w`-1
+noOfMoves=`echo $1 | sed 's/:/\n/g' | wc -l`
+let noOfMovesPlusOne="$noOfMoves"+1
+
+i=0
+
+for game in "$@"; do 
+	if [[ "$i" -eq 0 ]]; then
+		let i++
+		continue
+	fi
+	let i++
+	echo `basename "$0"`": analizing game no $i/$noOfGames: $game" >&2
+	size=`board-size "$game"` 
+	if [[ "$size" != '9' ]]; then 
+		continue 
+	fi
+	# TODO: write first moves
+	if [[ `first-moves "$noOfMoves" "$game"` != "$1" ]]; then
+		continue
+	fi
+	winner=`winner "$game"` 
+	if [[ -z "$winner" ]]; then 
+		continue 
+	fi
+	# TODO: write move-number
+	nextMove=`move-number "$noOfMovesPlusOne" "$game"`
+	if [[ -z "$nextMove" ]]; then 
+		continue 
+	fi 
+	echo "$nextMove $winner" 
+done | sort | uniq -c
+

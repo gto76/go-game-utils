@@ -88,6 +88,11 @@ Just a basic scripts that search through passed game-file and print requested in
 
 * Prints first move of the passed game.
 
+##### [**`first-moves`**](query/first-moves)
+* Usage: `first-moves [NO OF MOVES] [SGF FILE]`
+
+* Prints first move of the passed game.
+
 ##### [**`number-of-moves`**](query/number-of-moves)
 * Usage: `number-of-moves [SGF FILE]`
 
@@ -110,10 +115,15 @@ This scripts are the reason for all the others.
 ##### [**`visualize-percentages`**](analysis/visualize-percentages)
 * Usage: `visualize-percentages [FILE CONTAINING OUTPUT FROM wins-per-first-move OR SIMILAR SCRIPT]`
 
-* Prints a go board with win percentages in fields that got entries in the passed file. Only for 9x9 games.
+* Prints a go board with win percentages in fields that got entries in the passed file. If '-' is passed instead of a filename, then it reads from pipe. Works correctly only with 9x9 games.
 
 ##### [**`wins-per-first-move`**](analysis/wins-per-first-move)
 * Usage: `wins-per-first-move [SGF FILE]...`
 
 * Prints number of wins and loses for every starting move among the passed games. Only analyzes 9x9 games.
+
+##### [**`wins-per-first-moves`**](analysis/wins-per-first-moves)
+* Usage: `wins-per-first-moves [MOVE]:... [SGF FILE]...`
+
+* Prints number of wins and loses for every move after the MOVEs among the passed games. Only analyzes 9x9 games.
 
