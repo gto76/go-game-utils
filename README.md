@@ -8,15 +8,33 @@ Go Utilities
  
 How to run:
 -----------
+### Windows
+* Download and install [wget](http://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setup.exe/download)
+* Open command prompt
+* Go to the directory where you want Cygwin installed
+* Install and start Cygwin:
+
+>```bat
+setx PATH "%PATH%;C:\Program Files (x86)\GnuWin32\bin"
+wget --no-check-certificate https://cygwin.com/setup-x86_64.exe
+mkdir cygwin
+setup-x86_64.exe --quiet-mode --no-shortcuts --site http://cygwin.mirror.constant.com --root %cd%\cygwin -P git -P wget -P gcc-core -P libgcc1 -P libclang-devel -P make -P bc -B
+cygwin\Cygwin.bat
+```
+
+* Once in Cygwin, run the UNIX commands to start the game
+
+### UNIX
 ```bash
-$ git clone https://github.com/gto76/go-utilities.git
-$ cd go-utilities
-$ make
-$ export PATH="$PATH:`pwd`/bin" 
-$ download-games {1000-1030}
-$ cd games
-$ delete-unneeded-games *
-$ wins-per-first-move *
+git clone https://github.com/gto76/go-game-utils.git
+cd go-game-utils 
+make
+export PATH="$PATH:`pwd`/bin" 
+download-games {10234..10244}
+cd games
+delete-unneeded-games *
+wins-per-first-move * > tmp
+visualize-percentages tmp
 ```
 The end result of this sequence of commands is a diagram of 9x9 go board, showing winning percentages of different starting moves, and it should look something like that:
 ```
