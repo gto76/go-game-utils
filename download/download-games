@@ -11,7 +11,7 @@ fi
 
 mkdir games
 
-for gamedId in "$@"; do
+for gameId in "$@"; do
 	wget https://online-go.com/api/v1/games/"$gameId"/sgf -O games/"$gameId".sgf
 done
 
