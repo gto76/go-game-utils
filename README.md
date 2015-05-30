@@ -6,7 +6,7 @@ Go Utilities
 * Utilities are made to help you download, transform and query games stored in sgf format. 
 * Main use-case of this utilities is statistical analysis of effectiveness of different openings on a 9x9 board. Simple example is [**`wins-per-first-move`**](analysis/wins-per-first-move) script, that calculates winning percentage for every starting move in passed games.
  
-How to run on…
+How to run on …
 --------------
 ### Windows
 * Download and install [wget](http://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setup.exe/download)
