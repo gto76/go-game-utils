@@ -8,7 +8,8 @@ Go Utilities
  
 How to run on…
 --------------
-### Windows
+### Windows on…
+#### Cygwin
 * Download and install [wget](http://sourceforge.net/projects/gnuwin32/files/wget/1.11.4-1/wget-1.11.4-1-setup.exe/download)
 * Open command prompt
 * Go to the directory where you want Cygwin installed
@@ -22,7 +23,11 @@ setup-x86_64.exe --quiet-mode --no-shortcuts --site http://cygwin.mirror.constan
 cygwin\Cygwin.bat
 ```
 
-* Once in Cygwin, run the UNIX commands to start the game
+* Once in Cygwin, run the UNIX commands.
+
+#### VirtualBox
+* Install *Tiny Core Linux* on *VirtualBox* using this [**instructions**](https://github.com/gto76/my-linux-setup/tree/gh-pages/conf-files/tiny-core-linux).
+* Run the *UNIX* commands.
 
 ### UNIX
 ```bash
