@@ -30,7 +30,7 @@ cygwin\Cygwin.bat
 * Run the *UNIX* commands.
 
 ### UNIX
-```bash
+```
 git clone https://github.com/gto76/go-game-utils.git
 cd go-game-utils 
 make
@@ -82,10 +82,7 @@ Normalization
 Main program called normalize-game, 'normalizes' your game using rotation and mirroring of the board using predefined criteria defining on which part of the board should the first moves be played. This way the games that start with identical opening, but with rotated or mirrored orientation will now have the same rotation and mirroring, thus will have the same opening moves. (Useful for analysis of openings, your winning percentage for every move, and so on..)
  
 Definition of normalized game:
-As many consecutive moves as possible from the start of the game should satisfy the following rules:
-	1. x >= 0
-	2. y >= 0
-	3. x >= y
+As many consecutive moves as possible from the start of the game should satisfy the following rules: x >= 0, y >= 0 and x >= y.  
  
 ##### [**`normalize-games`**](normalization/normalize-games)
 * Usage: `normalize-games [SGF FILE]...`
