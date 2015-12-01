@@ -38,6 +38,7 @@ export PATH="$PATH:`pwd`/bin"
 download-games {10234..10244}
 cd games
 delete-unneeded-games *
+normalize-games *
 wins-per-first-move * > tmp
 visualize-percentages tmp
 ```
