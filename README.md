@@ -35,7 +35,7 @@ git clone https://github.com/gto76/go-game-utils.git
 cd go-game-utils 
 make
 export PATH="$PATH:`pwd`/bin" 
-download-games {10234..10244}
+./download/download-games {10234..10244}
 cd games
 delete-unneeded-games *
 wins-per-first-move * > tmp
