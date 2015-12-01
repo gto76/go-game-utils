@@ -1,6 +1,8 @@
 
 Go Utilities
 ============
+
+![screenshot](doc/screenshot.png)
  
 * Go is an ancient board game invented at least 2500 years ago in China. 
 * Utilities are made to help you download, transform and query games stored in sgf format. 
@@ -35,7 +37,7 @@ git clone https://github.com/gto76/go-game-utils.git
 cd go-game-utils 
 make
 export PATH="$PATH:`pwd`/bin" 
-./download/download-games {10234..10244}
+download-games {10234..10244}
 cd games
 delete-unneeded-games *
 normalize-games *
