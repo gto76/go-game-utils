@@ -1,6 +1,8 @@
 
-Go Utilities
-============
+Go Game Utils
+=============
+
+#### Utility scripts for analysis of go games
 
 ![screenshot](doc/screenshot.png)
  
