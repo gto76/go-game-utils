@@ -65,7 +65,8 @@ Utilities consist of bash scripts and c programs that are grouped by functionali
   
 Download
 --------
-Different scripts that help you download your games from www.online-go.com website (as of now the website doesn't enable you to download all of your games at once, so you have to go to your games list, inspect the element with your browse, copy the raw html, save it to the file and pass the filename to the script, which then downloads the games. Since most games that can be shown per page is 50, you have to repeat the procedure 50 games at the time)
+
+Different scripts that help you download your games from www.online-go.com website (as of now the website doesn't enable you to download all of your games at once, so you have to go to your games list, inspect the element with your browser, copy the raw html, save it to the file and pass the filename to the script, which then downloads the games. Since most games that can be shown per page is 50, you have to repeat the procedure 50 games at the time)
  
 ##### [**`download-games`**](download/download-games)
 * Usage: `download-games [GAME ID]...`
@@ -81,6 +82,8 @@ Different scripts that help you download your games from www.online-go.com websi
 * Usage: `get-game-ids-from-html [HTML FILE WITH LINKS TO GAMES]`
 
 * Pass this script filename of html file with list of games and it will return this games urls, one per line.
+
+#### On 20.9.2014 I managed to download all games from the server! They are accessible [HERE](https://github.com/gto76/online-go-games)
 
 Normalization
 -------------
