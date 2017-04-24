@@ -19,7 +19,7 @@ How to run on…
 * Go to the directory where you want Cygwin installed
 * Install and start Cygwin:
 
->```bat
+```bat
 setx PATH "%PATH%;C:\Program Files (x86)\GnuWin32\bin"
 wget --no-check-certificate https://cygwin.com/setup-x86_64.exe
 mkdir cygwin
